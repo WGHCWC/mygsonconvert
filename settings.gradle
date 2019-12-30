@@ -1,0 +1,2 @@
+include ':app', ':mygsonconvert'
+rootProject.name='RetrofitConvert'
