@@ -55,7 +55,7 @@ public final class MyGsonConvertFactory extends Converter.Factory {
         if (listener == null) {
             listener = new ServerErrorHandleListener() {
                 @Override
-                public IOException needThrow(JSONObject jsonObject) throws JSONException {
+                public IOException needThrow(JSONObject jsonObject,String body) throws JSONException {
                     return null;
                 }
             };

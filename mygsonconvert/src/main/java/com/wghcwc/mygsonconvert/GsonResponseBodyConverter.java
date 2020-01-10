@@ -40,14 +40,14 @@ final class GsonResponseBodyConverter<T> implements Converter<ResponseBody, T> {
         String json = value.string();
         try {
             JSONObject object = new JSONObject(json);
-            IOException serverException = listener.needThrow(object);
+            IOException serverException = listener.needThrow(object,json);
             if (serverException == null) {
                 return adapter.fromJson(json);
             } else {
                 throw serverException;
             }
         } catch (JSONException e) {
-            throw new ServiceErrorException(500, "数据解析异常");
+            throw new ServiceErrorException(e);
         } finally {
             value.close();
         }
